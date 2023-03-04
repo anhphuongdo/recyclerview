@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mWordList.add("SQL");
+        /* mWordList.add("SQL");
         mWordList.add("Java");
         mWordList.add("text1");
         mWordList.add("text2");
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mWordList.add("text7");
         mWordList.add("text8");
         mWordList.add("text9");
-        mWordList.add("text10");
+        mWordList.add("text10"); */
 
         mRecyclerView = findViewById(R.id.recycleview);
         mAdapter = new WordListAdapter(this, mWordList);

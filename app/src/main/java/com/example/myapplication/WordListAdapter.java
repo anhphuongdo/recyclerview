@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,14 @@ public class WordListAdapter extends RecyclerView.Adapter<WordViewHolder>{
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
         String mCurrent = mWordList.get(position);
         holder.wordItemView.setText(mCurrent);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mInflater.getContext(), DetailActivity.class);
+                intent.putExtra("Detail", "This is description");
+                mInflater.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
