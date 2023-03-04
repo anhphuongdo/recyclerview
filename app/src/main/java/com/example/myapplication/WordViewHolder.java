@@ -1,18 +1,21 @@
 package com.example.myapplication;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
     public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final WordListAdapter mAdapter;
-        TextView wordItemView;
+        TextView tvTitle;
+        TextView tvDescription;
+        ImageView imvDetail;
 
         public WordViewHolder(View itemView, WordListAdapter adapter) {
             super(itemView);
 
-            wordItemView = itemView.findViewById(R.id.word);
+            tvTitle = itemView.findViewById(R.id.tv_title);
             this.mAdapter = adapter;
             itemView.setOnClickListener(this);
         }

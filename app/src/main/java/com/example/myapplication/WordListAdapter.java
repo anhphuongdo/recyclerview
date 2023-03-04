@@ -9,28 +9,34 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class WordListAdapter extends RecyclerView.Adapter<WordViewHolder>{
-    private LinkedList<String> mWordList;
+    private LinkedList<Fruit> mFruitList;
     private LayoutInflater mInflater;
 
-    public WordListAdapter(Context context, LinkedList<String> wordList){
+    public WordListAdapter(Context context, LinkedList<Fruit> fruitList){
         mInflater = LayoutInflater.from(context);
-        this.mWordList = wordList;
+        this.mFruitList = fruitList;
     }
 
     @NonNull
     @Override
     public WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Nạp layout cho View biểu diễn phần tử Fruit
         View mItemView = mInflater.inflate(R.layout.item_layout, parent, false);
         return new WordViewHolder(mItemView, this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
-        String mCurrent = mWordList.get(position);
-        holder.wordItemView.setText(mCurrent);
+        Fruit mCurrent = mFruitList.get(position);
+        holder.tvTitle.setText(mCurrent.getName());
+        holder.tvDescription.setText(mCurrent.getDescription());
+
+        Glide.with(mInflater.getContext()).load(mCurrent.getCoverUrl()).into(holder.imvDetail);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +49,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordViewHolder>{
 
     @Override
     public int getItemCount() {
-        return mWordList.size();
+        return mFruitList.size();
     }
 
 
