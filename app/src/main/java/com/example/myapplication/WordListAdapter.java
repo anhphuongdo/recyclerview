@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.LocalDateTime;
+import com.squareup.picasso.Picasso;
+
 import java.util.LinkedList;
 
 public class WordListAdapter extends RecyclerView.Adapter<WordViewHolder>{
@@ -33,15 +34,19 @@ public class WordListAdapter extends RecyclerView.Adapter<WordViewHolder>{
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
         Fruit mCurrent = mFruitList.get(position);
         holder.tvTitle.setText(mCurrent.getName());
-        holder.tvDescription.setText(mCurrent.getDescription());
+        holder.tvDescription.setText(mCurrent.getShort_description(mCurrent.getDescription()));
+        Picasso.get().load(mFruitList.get(position).getCoverUrl()).into(holder.imvDetail);
+        //Glide.with(mInflater.getContext()).load(mCurrent.getCoverUrl()).into(holder.imvDetail);
 
-        Glide.with(mInflater.getContext()).load(mCurrent.getCoverUrl()).into(holder.imvDetail);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mInflater.getContext(), DetailActivity.class);
-                intent.putExtra("Detail", "This is description");
+                intent.putExtra("id", holder.getBindingAdapterPosition());
+                /*intent.putExtra("Detail", holder.tvDescription.getText().toString());
+                intent.putExtra("Title", holder.tvTitle.getText().toString());
+                intent.putExtra("ImageDetail", mCurrent.getCoverUrl());*/
                 mInflater.getContext().startActivity(intent);
             }
         });

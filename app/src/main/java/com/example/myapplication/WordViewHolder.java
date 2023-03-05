@@ -12,10 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
         TextView tvDescription;
         ImageView imvDetail;
 
+        Fruit mFruit;
+
         public WordViewHolder(View itemView, WordListAdapter adapter) {
             super(itemView);
 
             tvTitle = itemView.findViewById(R.id.tv_title);
+            tvDescription = itemView.findViewById(R.id.tv_detail);
+            imvDetail = itemView.findViewById(R.id.imv_detail);
+
             this.mAdapter = adapter;
             itemView.setOnClickListener(this);
         }

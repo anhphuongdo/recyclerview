@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     private WordListAdapter mAdapter;
-    private LinkedList<Fruit> mFruitList = new LinkedList<>();
+    private LinkedList<Fruit> mFruitList = Fruit.generateFruit();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         mWordList.add("text8");
         mWordList.add("text9");
         mWordList.add("text10"); */
+
 
         mRecyclerView = findViewById(R.id.recycleview);
         mAdapter = new WordListAdapter(this, mFruitList);
